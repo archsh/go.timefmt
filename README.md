@@ -20,17 +20,18 @@ Index
 
 Example
 -------
-        package main
-        import (
-            "fmt"
-            "time"
-            "github.com/archsh/timefmt"
-        )
-        
-        func main() {
-            
-        }
+```golang
+package main
+import (
+    "fmt"
+    "time"
+    "github.com/archsh/timefmt"
+)
 
+func main() {
+    
+}
+```
 Codes
 -----
 
