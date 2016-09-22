@@ -2,6 +2,8 @@ Package timefmt
 ===============
 A package of formatting and parsing datetime for golang which follows Python's directives in http://strftime.org/ .
 
+[![Build Status](https://travis-ci.org/archsh/timefmt.svg?branch=master)](https://travis-ci.org/archsh/timefmt)
+
 Index
 -----
 * Check
