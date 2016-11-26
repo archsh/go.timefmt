@@ -6,10 +6,6 @@ A package of formatting and parsing datetime for golang which follows Python's d
 
 Index
 -----
-* Check
-    `func Check(format string) error`
-    Check if the given format string is valid.
-
 * Strftime
     `func Strftime(t time.Time, format string) (string, error)`
     Return formatted time in string.
@@ -20,7 +16,7 @@ Index
 
 Example
 -------
-```golang
+```go
 package main
 import (
     "fmt"
