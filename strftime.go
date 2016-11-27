@@ -167,9 +167,7 @@ func cvt_output_percent(t time.Time, flags bool)(string, error){
 	return "%", nil
 }
 
-type OutputConverter func(time.Time, bool)(string, error) /** flags: true means with '-' */
-
-var ontput_converters = map[rune]OutputConverter {
+var ontput_converters = map[rune]func(time.Time, bool)(string, error) {
 	//| %a	| Weekday as locale’s abbreviated name.	| Mon|
 	'a': cvt_output_a,
 	//| %A	| Weekday as locale’s full name.	| Monday|
