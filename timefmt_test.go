@@ -24,6 +24,8 @@ func TestStrftime(t *testing.T) {
 	var validate = func (tm time.Time, format string, result string) {
 		if s, e := Strftime(tm, format); e != nil || s != result {
 			t.Errorf("Strftime(/%v/, '%s') should return '%s' but not (%s) (%s)\n", tm, format, result, e, s)
+		}else{
+			t.Logf("%s: %s => %s", tm, format, s)
 		}
 	}
 	tm := time.Unix(1474524266, 321)
@@ -34,6 +36,10 @@ func TestStrftime(t *testing.T) {
 	validate(tm, "%Y-%b-%dT%H:%M:%S","2016-Sep-22T14:04:26")
 	validate(tm, "%Y-%B-%dT%H:%M:%S","2016-September-22T14:04:26")
 	validate(tm, "%Y-%b-%dT%H:%-M:%S","2016-Sep-22T14:4:26")
+	validate(tm, "%c", "Thu Sep 22 14:04:26 2016")
+	validate(tm, "%x", "09/22/16")
+	validate(tm, "%X", "14:04:26")
+	validate(tm, "%Y-%m-%dT%H:%M:%S %z","2016-09-22T14:04:26 +0800")
 }
 
 //func TestStrptime(t *testing.T) {
