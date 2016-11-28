@@ -46,15 +46,18 @@ func TestStrftime(t *testing.T) {
 }
 
 func TestStrptime(t *testing.T) {
-
 	var validate = func (val string, format string, result time.Time) {
 		if tm, e := Strptime(val, format); e != nil || tm != result {
-			t.Errorf("Strptime('%s', '%s') should return /%v/ but not (%s) (%v)\n", val, format, result, e, tm)
+			t.Errorf("Strptime('%s', '%s') should return /%v/ but not (%v) (%s) \n", val, format, result, tm, e)
+			t.Errorf("%v -%v = %v \n", result, tm, result.Sub(tm))
 		}
 	}
-	tm := time.Unix(1474524266, 321)
-	validate("2016-Sep-22T14:04:26.000000321", "%Y-%b-%dT%H:%M:%S.%f", tm)
-
+	//loc, _ := time.LoadLocation("Asia/Shanghai")
+	//tm := time.Unix(1474524266, 321000).In(loc)
+	//validate("2016-Sep-22T14:04:26.000321 Asia/Shanghai", "%Y-%b-%dT%H:%M:%S.%f %Z", tm)
+	loc, _ := time.LoadLocation("UTC")
+	tm := time.Unix(1474524266, 321000).In(loc)
+	validate("2016-Sep-22T06:04:26.000321 UTC", "%Y-%b-%dT%H:%M:%S.%f %Z", tm)
 }
 
 func BenchmarkStrftime(b *testing.B) {
