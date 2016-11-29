@@ -1,22 +1,22 @@
-timefmt
-====================================
+# timefmt
+
 A package of formatting and parsing datetime for golang which follows Python's directives in http://strftime.org/ .
 *_It should work, but performance maybe should be improved later._*
 
 [![Build Status](https://travis-ci.org/archsh/timefmt.svg?branch=master)](https://travis-ci.org/archsh/timefmt)
 
-Index
------
-* Strftime
-    `func Strftime(t time.Time, format string) (string, error)`
-    Return formatted time in string.
+## Index
 
-* Strptime
-    `func Strptime(value string, format string) (time.Time, error)`
-    Parse given string into time.
+### Strftime
+`func Strftime(t time.Time, format string) (string, error)`
+Return formatted time in string.
 
-Example
--------
+### Strptime
+`func Strptime(value string, format string) (time.Time, error)`
+Parse given string into time.
+
+## Example
+
 ```go
 package main
 import (
@@ -52,7 +52,7 @@ func main() {
 }
 
 ```
-Codes
+## Directives
 -----
 
 | Code | Meaning | Example |
@@ -89,7 +89,17 @@ Codes
 | %X	| Locale’s appropriate time representation.	| 07:06:05| 
 | %%	| A literal '%' character.	| %| 
 
-Not supported codes for Strptime()
-----------------------------------
+## Note
+
+### Not supported codes for Strptime()
 The following codes was not supported because it does not make sense:
-`%a` `%A` `%w` `%j` `%-j` `%U` `%W`
+- `%a`
+- `%A` 
+- `%w` 
+- `%j` 
+- `%-j` 
+- `%U` 
+- `%W`
+
+### Not ready yet for Strptime()
+- `%z`
