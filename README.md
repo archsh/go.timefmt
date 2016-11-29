@@ -25,8 +25,31 @@ import (
 )
 
 func main() {
-    
+    tm := time.Now()
+    s, e := timefmt.Strftime(tm, "%Y-%m-%dT%H:%M:%S")//,"2016-09-22T06:04:26")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%y-%m-%dT%H:%M:%S")//,"16-09-22T06:04:26")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%Y-%m-%dT%I:%M:%S")//,"2016-09-22T06:04:26")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%Y-%m-%dT %p %I:%M:%S")//,"2016-09-22T AM 06:04:26")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%Y-%b-%dT%H:%M:%S")//,"2016-Sep-22T06:04:26")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%Y-%B-%dT%H:%M:%S")//,"2016-September-22T06:04:26")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%Y-%b-%dT%H:%-M:%S")//,"2016-Sep-22T06:4:26")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%c")//, "Thu Sep 22 06:04:26 2016")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%x")//, "09/22/16")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%X")//, "06:04:26")
+    fmt.Printf("%s <%s>\n",s,e)
+    s, e = timefmt.Strftime(tm, "%Y-%m-%dT%H:%M:%S %z")//,"2016-09-22T06:04:26 +0000")
+    fmt.Printf("%s <%s>\n",s,e)
 }
+
 ```
 Codes
 -----
@@ -65,6 +88,7 @@ Codes
 | %X	| Locale’s appropriate time representation.	| 07:06:05| 
 | %%	| A literal '%' character.	| %| 
 
-Stories
--------
-See http://fuckinggodateformat.com/
+Not supported codes for Strptime()
+----------------------------------
+The following codes was not supported because it does not make sense:
+`%a` `%A` `%w` `%j` `%-j` `%U` `%W`
