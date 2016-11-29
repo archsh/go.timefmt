@@ -1,6 +1,7 @@
-Package timefmt [ NOT FINISHED YET ]
+timefmt
 ====================================
 A package of formatting and parsing datetime for golang which follows Python's directives in http://strftime.org/ .
+*_It should work, but performance maybe should be improved later._*
 
 [![Build Status](https://travis-ci.org/archsh/timefmt.svg?branch=master)](https://travis-ci.org/archsh/timefmt)
 
