@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"bytes"
 	"errors"
-	"fmt"
+	//"fmt"
 	"strconv"
 )
 
@@ -237,10 +237,10 @@ var input_converters = map[rune]func(string, *_DateTime) error {
 			return errors.New("Invalid time parameter!")
 		}
 		if t.loc,e = time.LoadLocation(val); nil != e {
-			fmt.Errorf("Failed: %s\n", e)
+			//fmt.Errorf("Failed: %s\n", e)
 			return e
 		}else{
-			fmt.Printf("Location: %s\n", t.loc)
+			//fmt.Printf("Location: %s\n", t.loc)
 			return nil
 		}
 	},
@@ -274,7 +274,7 @@ func buildRegexp(format string) (*regexp.Regexp, error) {
 	for i, j := 0, 0; i < length; i+=j+1 {
 		c := format[i]
 		j = 0
-		fmt.Printf("c > %c \n",c)
+		//fmt.Printf("c > %c \n",c)
 		if c != 0x25 || (i+1) >= length { // "%" -> 0x25
 			buf.WriteByte(c)
 			continue
@@ -283,7 +283,7 @@ func buildRegexp(format string) (*regexp.Regexp, error) {
 			j += 1
 		}
 		if (i+j+1) < length {
-			fmt.Printf("format[i+j+1]> %c \n",format[i+j+1])
+			//fmt.Printf("format[i+j+1]> %c \n",format[i+j+1])
 			if pattern, ok := input_regexes[rune(format[i+j+1])]; ok {
 
 				buf.WriteString(pattern)
@@ -309,11 +309,11 @@ func Strptime(value string, format string) (time.Time, error) {
 	if len(match) > 0 {
 		for i, name := range re.SubexpNames() {
 			if i != 0 {
-				fmt.Printf("Matched:(%s): %s \n", name, match[i])
+				//fmt.Printf("Matched:(%s): %s \n", name, match[i])
 				c := rune(name[0])
 				if cvt_func, ok := input_converters[c]; ok {
 					if e = cvt_func(match[i], dt); e != nil{
-						fmt.Errorf("Call '%s' function failed: %s \n", name, e)
+						//fmt.Errorf("Call '%s' function failed: %s \n", name, e)
 						return time.Time{}, e
 					}
 				}else{
@@ -324,7 +324,7 @@ func Strptime(value string, format string) (time.Time, error) {
 	}else{
 		return time.Time{}, errors.New("Can not match string with given format!")
 	}
-	
+
 	if dt.pm && dt.hour < 12 {
 		dt.hour += 12
 	}
